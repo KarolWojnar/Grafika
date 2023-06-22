@@ -203,28 +203,4 @@ public class  Renderer {
                     }
                 }
 
-            }
-        }
-    }
-}
-
-/*
-M = Mvp Mortho Mcam
-
-Możemy trasformację sprowadzić do dwóch operacji:
-    przekształcenia bryły widzenia widzenia (ostrosłup ścięty) do prostopadłościanu,
-    projekcji ortograficznej (równoległa prostokątna).
-    W pierwszym przypadku potrzebujemy pewnej macierzy, a w drugim
-    znanej już macierzy Mortho.
-
-Cieniowanie Gourauda - określanie koloru pikseli pokrywanych przez ścianę wielokąta
-    przez interpolacje koloru jego wierzchołków.
-
-Algorytmy ray tracingu używają mechanizmu ray casting do rekursywnego modelowania
-    zjawiska odbicia i rozproszenia światła przez obiekty. Wypadkową jest kolor piksela.
-
-
-Back-face culling- algorytm sprawdzający czy dana ścaian jest widoczna przez obserwatora(kamera)
-    dla każdego trójkąta liczy się iloczyn skalarny wektora normalnego i wektor kierunku obserwatora.
-    Jeśli iloczyn skalarny jest dodatni to dany trójkąt jest widoczny, jeśli nie to niewidoczyn.
- */
+           
