@@ -184,3 +184,17 @@ public class GouraudShadingRenderer extends Renderer {
         }
     }
 }
+
+
+/*
+
+Rzutowanie równoległe prostokątne:
+    zachowuje równoległość linii,
+    pozwala realistycznie przedstawić wymiary obiektu.
+
+Rzutowanie perspektywiczne:
+    obiekty znajdujące się dalej wydają się mniejsze,
+    pozwala uzyskać naturalnie wyglądające dla człowieka obrazy.
+
+
+ */

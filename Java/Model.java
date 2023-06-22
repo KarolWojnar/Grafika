@@ -57,3 +57,26 @@ public class Model {
                 Integer.parseInt(splitted[3].split("/")[0])); // we need to split based on "/" to get vertex_index
     }
 }
+
+/*
+Object order rendering:
+(Bardzo ogólna) zasada działania:
+projekcja wierzchołków trójkątów
+z przestrzeni 3D na płaszczyznę
+znajdź wszystkie piksele które należą
+do tego trójkąta (rasteryzacja)
+przetwarzaj piksele (kolor, widoczność)
+
+
+Potok graficzny:
+Aplikacj - > przetwarzanie geometrii -> Rasteryzacja -> przetwarzanie pikseli
+
+
+Algorytmy ray tracingu używają mechanizmu ray casting do rekursywnego modelowania
+zjawiska odbicia i rozproszenia światła przez obiekty. Wypadkową jest kolor piksela.
+
+
+Cieniowanie płaskie - określa się kolor każdej ściany siatki wielokątów, na podstawie
+wektora normalnego i kąta padania światła
+
+ */
