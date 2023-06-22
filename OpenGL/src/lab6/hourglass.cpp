@@ -194,31 +194,5 @@ void processInput(GLFWwindow* window)
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     // Upewnij się, że widok odpowiada nowym wymiarom okna; zauważ, że szerokość i
-    // wysokość będą znacznie większe niż podane na ekranach Retina.
-    glViewport(0, 0, width, height);
-}
-
-
-/*
-
-/*
-
-Funkcja framebuffer_size_callback to funkcja wywoływana przez GLFW przy zmianie rozmiaru okna.
-Jej celem jest dostosowanie widoku OpenGL do nowych wymiarów okna.
- Przyjmuje ona wskaźnik na okno GLFW (window) oraz nowe wymiary okna (width i height).
-
-Funkcja processInput obsługuje wejście od użytkownika.
-W tym konkretnym przypadku, sprawdza, czy klawisz Esc został wciśnięty, a jeśli tak,
-ustawia flagę glfwSetWindowShouldClose na true, co spowoduje zamknięcie okna.
-
-Główna funkcja main jest punktem wejścia do programu.
-Inicjalizuje ona GLFW, tworzy okno, inicjalizuje GLAD do ładowania funkcji OpenGL, kompiluje i łączy shadery,
- i konfiguruje bufory wierzchołków, a następnie rozpoczyna pętlę renderowania,
-  w której renderowane są trójkąty i obsługiwane są zdarzenia wejściowe.
-
-Program rysuje dwa trójkąty, jeden na górze i drugi na dole okna.
- Możesz zmienić współrzędne wierzchołków, aby dostosować kształt trójkątów lub dodać więcej trójkątów do renderowania.
-
-*/
-
+    // wysokość będą znacznie większe niż podane na ekranach 
 */
