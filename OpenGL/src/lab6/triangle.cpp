@@ -9,7 +9,7 @@ void processInput(GLFWwindow* window);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-// kod ürÛd≥owy shadera wierzcho≥kÛw
+// kod ≈∫r√≥d≈Çowy shadera wierzcho≈Çk√≥w
 const char* vertexShaderSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
 "void main()\n"
@@ -17,7 +17,7 @@ const char* vertexShaderSource = "#version 330 core\n"
 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
 "}\0";
 
-// kod ürÛd≥owy shadera fragmentÛw
+// kod ≈∫r√≥d≈Çowy shadera fragment√≥w
 const char* fragmentShaderSource = "#version 330 core\n"
 "out vec4 FragColor;\n"
 "void main()\n"
@@ -43,80 +43,80 @@ int main()
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Hourglass", NULL, NULL);
     if (window == NULL)
     {
-        std::cout << "Nie uda≥o siÍ utworzyÊ okna GLFW" << std::endl;
+        std::cout << "Nie uda≈Ço siƒô utworzyƒá okna GLFW" << std::endl;
         glfwTerminate();
         return -1;
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // glad: wczytanie wskaünikÛw do funkcji OpenGL
+    // glad: wczytanie wska≈∫nik√≥w do funkcji OpenGL
     // -------------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
-        std::cout << "Nie uda≥o siÍ zainicjowaÊ GLAD" << std::endl;
+        std::cout << "Nie uda≈Ço siƒô zainicjowaƒá GLAD" << std::endl;
         return -1;
     }
 
 
-    // kompilacja i zlinkowanie programu shaderÛw
+    // kompilacja i zlinkowanie programu shader√≥w
     // -----------------------------------------
-    // shader wierzcho≥kÛw
+    // shader wierzcho≈Çk√≥w
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
     glCompileShader(vertexShader);
-    // sprawdzenie b≥ÍdÛw kompilacji shadera
+    // sprawdzenie b≈Çƒôd√≥w kompilacji shadera
     int success;
     char infoLog[512];
     glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
     if (!success)
     {
         glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cout << "B£•D::SHADER::WIERZCHO£EK::KOMPILACJA_NIEUDANA\n" << infoLog << std::endl;
+        std::cout << "B≈ÅƒÑD::SHADER::WIERZCHO≈ÅEK::KOMPILACJA_NIEUDANA\n" << infoLog << std::endl;
     }
-    // shader fragmentÛw
+    // shader fragment√≥w
     unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
     glCompileShader(fragmentShader);
-    // sprawdzenie b≥ÍdÛw kompilacji shadera
+    // sprawdzenie b≈Çƒôd√≥w kompilacji shadera
     glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
     if (!success)
     {
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cout << "B£•D::SHADER::FRAGMENT::KOMPILACJA_NIEUDANA\n" << infoLog << std::endl;
+        std::cout << "B≈ÅƒÑD::SHADER::FRAGMENT::KOMPILACJA_NIEUDANA\n" << infoLog << std::endl;
     }
-    // zlinkowanie shaderÛw
+    // zlinkowanie shader√≥w
     unsigned int shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
-    // sprawdzenie b≥ÍdÛw linkowania
+    // sprawdzenie b≈Çƒôd√≥w linkowania
     glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        std::cout << "B£•D::SHADER::PROGRAM::LINKOWANIE_NIEUDANE\n" << infoLog << std::endl;
+        std::cout << "B≈ÅƒÑD::SHADER::PROGRAM::LINKOWANIE_NIEUDANE\n" << infoLog << std::endl;
     }
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    // konfiguracja danych wierzcho≥kÛw
+    // konfiguracja danych wierzcho≈Çk√≥w
     // --------------------------------
     float vertices1[] = {
         -0.4f, -0.6f, 0.0f, // lewy dolny punkt
          0.4f, -0.6f, 0.0f, // prawy dolny punkt
-         0.0f,  0.0f, 0.0f  // gÛrny punkt
+         0.0f,  0.0f, 0.0f  // g√≥rny punkt
     };
 
     float vertices2[] = {
-        -0.4f, 0.6f, 0.0f, // lewy gÛrny punkt
-         0.4f, 0.6f, 0.0f, // prawy gÛrny punkt
-         0.0f, 0.0f, 0.0f  // gÛrny punkt
+        -0.4f, 0.6f, 0.0f, // lewy g√≥rny punkt
+         0.4f, 0.6f, 0.0f, // prawy g√≥rny punkt
+         0.0f, 0.0f, 0.0f  // g√≥rny punkt
     };
 
     unsigned int VBO1, VAO1;
     glGenVertexArrays(1, &VAO1);
     glGenBuffers(1, &VBO1);
-    // powiπzanie Vertex Array Object (VAO) jako pierwszego, nastÍpnie powiπzanie i skonfigurowanie bufora wierzcho≥kÛw (VBO) i atrybutÛw wierzcho≥kÛw
+    // powiƒÖzanie Vertex Array Object (VAO) jako pierwszego, nastƒôpnie powiƒÖzanie i skonfigurowanie bufora wierzcho≈Çk√≥w (VBO) i atrybut√≥w wierzcho≈Çk√≥w
     glBindVertexArray(VAO1);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO1);
@@ -141,14 +141,14 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    // odkomentuj tÍ linijkÍ, aby rysowaÊ w trybie wyúwietlania linii.
+    // odkomentuj tƒô linijkƒô, aby rysowaƒá w trybie wy≈õwietlania linii.
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    // pÍtla renderowania
+    // pƒôtla renderowania
     // -----------------
     while (!glfwWindowShouldClose(window))
     {
-        // obs≥uga wejúcia
+        // obs≈Çuga wej≈õcia
         // ---------------
         processInput(window);
 
@@ -161,17 +161,17 @@ int main()
         glBindVertexArray(VAO1);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
-        // rysowanie drugiego trÛjkπta
+        // rysowanie drugiego tr√≥jkƒÖta
         glBindVertexArray(VAO2);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
-        // glfw: zamiana buforÛw i obs≥uga zdarzeÒ wejúciowych (naciúniÍcie/wyciúniÍcie klawiszy, ruch myszy itp.)
+        // glfw: zamiana bufor√≥w i obs≈Çuga zdarze≈Ñ wej≈õciowych (naci≈õniƒôcie/wyci≈õniƒôcie klawiszy, ruch myszy itp.)
         // ---------------------------------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
-    // opcjonalne: zwolnienie wszystkich zasobÛw, gdy nie sπ juø potrzebne:
+    // opcjonalne: zwolnienie wszystkich zasob√≥w, gdy nie sƒÖ ju≈º potrzebne:
     // ------------------------------------------------------------------
     glDeleteVertexArrays(1, &VAO1);
     glDeleteBuffers(1, &VBO1);
@@ -179,13 +179,13 @@ int main()
     glDeleteBuffers(1, &VBO2);
     glDeleteProgram(shaderProgram);
 
-    // glfw: zakoÒczenie, czyszczenie wszystkich wczeúniej zaalokowanych zasobÛw GLFW.
+    // glfw: zako≈Ñczenie, czyszczenie wszystkich wcze≈õniej zaalokowanych zasob√≥w GLFW.
     // --------------------------------------------------------------------------
     glfwTerminate();
     return 0;
 }
 
-// obs≥uga wejúcia: sprawdzenie, czy odpowiednie klawisze sπ naciúniÍte/wyciúniÍte w tej klatce i reakcja na to
+// obs≈Çuga wej≈õcia: sprawdzenie, czy odpowiednie klawisze sƒÖ naci≈õniƒôte/wyci≈õniƒôte w tej klatce i reakcja na to
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
 {
@@ -193,33 +193,11 @@ void processInput(GLFWwindow* window)
         glfwSetWindowShouldClose(window, true);
 }
 
-// glfw: funkcja wywo≥ywana za kaødym razem, gdy zmieni siÍ rozmiar okna (zmiana rozmiaru przez OS lub uøytkownika)
+// glfw: funkcja wywo≈Çywana za ka≈ºdym razem, gdy zmieni siƒô rozmiar okna (zmiana rozmiaru przez OS lub u≈ºytkownika)
 // --------------------------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    // upewnij siÍ, øe viewport pasuje do nowych wymiarÛw okna; zauwaø, øe szerokoúÊ i wysokoúÊ bÍdπ znacznie wiÍksze niø podane na wyúwietlaczach retina.
+    // upewnij siƒô, ≈ºe viewport pasuje do nowych wymiar√≥w okna; zauwa≈º, ≈ºe szeroko≈õƒá i wysoko≈õƒá bƒôdƒÖ znacznie wiƒôksze ni≈º podane na wy≈õwietlaczach retina.
     glViewport(0, 0, width, height);
 }
-
-/*
-
-framebuffer_size_callback(GLFWwindow* window, int width, int height): 
-Jest to funkcja zwrotna (callback), ktÛra jest wywo≥ywana przez bibliotekÍ GLFW za kaødym razem, gdy zmienia siÍ rozmiar okna. 
-Funkcja ta ustawia widok OpenGL (viewport) na nowe wymiary okna.
-
-processInput(GLFWwindow* window): Ta funkcja sprawdza, czy uøytkownik nacisnπ≥ klawisz Esc. 
-Jeúli tak, ustawia flagÍ zamykania okna GLFW, co powoduje zakoÒczenie g≥Ûwnej pÍtli programu.
-
-main(): G≥Ûwna funkcja programu. Odpowiada za inicjalizacjÍ GLFW, tworzenie okna, inicjalizacjÍ i ≥adowanie funkcji OpenGL przy uøyciu GLAD, 
-kompilacjÍ i linkowanie shaderÛw, konfiguracjÍ danych wierzcho≥kÛw, oraz uruchamianie g≥Ûwnej pÍtli renderowania.
-
-Inicjalizacja GLFW i konfiguracja kontekstu OpenGL.
-Tworzenie okna GLFW.
-Inicjalizacja GLAD w celu ≥adowania funkcji OpenGL.
-Kompilacja shaderÛw wierzcho≥kÛw i fragmentÛw oraz ich linkowanie w program shaderÛw.
-Konfiguracja danych wierzcho≥kÛw poprzez tworzenie i konfigurowanie buforÛw wierzcho≥kÛw i atrybutÛw wierzcho≥kÛw.
-G≥Ûwna pÍtla renderowania, w ktÛrej odbywa siÍ obs≥uga wejúcia, czyszczenie bufora kolorÛw, uøycie programu shaderÛw, rysowanie trÛjkπtÛw i obs≥uga zdarzeÒ wejúciowych.
-Zwolnienie zasobÛw po zakoÒczeniu programu.
-
-*/
 
